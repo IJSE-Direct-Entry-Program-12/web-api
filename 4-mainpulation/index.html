@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manipulation</title>
+    <script defer src="./js/index.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <style>
+        li {
+            font-size: 1.5rem;
+
+            ion-icon {
+                vertical-align: text-top;
+                cursor: pointer;
+                &:hover {
+                    color: red;
+                }
+            }
+        }
+
+        button, input {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manipulation</h1>
+    <input id="txt-input" type="text">
+    <button id="btn-add">Add New</button>
+    <ul id="item-list">
+        <li>First
+            <ion-icon name="trash-outline"></ion-icon>
+        </li>
+        <li>Second
+            <ion-icon name="trash-outline"></ion-icon>
+        </li>
+    </ul>
+</body>
+</html>
