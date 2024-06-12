@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manage Customers</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <style>
+        table, td, tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+            user-select: none;
+
+            tbody tr {
+                cursor: pointer;
+
+                &:hover {
+                    background-color: lightgray;
+                }
+            }
+
+            thead {
+                font-weight: bold;
+            }
+        }
+
+        table td {
+            padding: 10px;
+        }
+
+        :where(table) td:first-child, td:last-child {
+            text-align: center;
+        }
+
+        table td:last-child ion-icon{
+            font-size: 1.5rem;
+
+            &:hover {
+                color: red;
+            }
+        }
+    </style>
+    <script defer src="./js/manage-customers.js"></script>
+</head>
+<body>
+<h1>Manage Customers</h1>
+<form action="javascript:void(0)">
+    <p>
+        ID: <input id="txt-id" type="text" placeholder="Eg. C001">
+    </p>
+    <p>
+        Name: <input id="txt-name" type="text" placeholder="Eg. Kasun Sampath">
+    </p>
+    <button id="btn-add">Add</button>
+</form>
+<table id="tbl-customer">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>NAME</td>
+            <td>DELETE</td>
+        </tr>
+    </thead>
+    <tbody>
+<!--        <tr>-->
+<!--            <td>C001</td>-->
+<!--            <td>Kasun Sampath</td>-->
+<!--            <td><ion-icon name="trash-outline"></ion-icon></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>C002</td>-->
+<!--            <td>Nuwan Ramindu</td>-->
+<!--            <td><ion-icon name="trash-outline"></ion-icon></td>-->
+<!--        </tr>-->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">No customer records yet</td>
+        </tr>
+    </tfoot>
+</table>
+
+<hr>
+
+<div id="abc">
+    <p>Hello</p>
+    <button>Click</button>
+</div>
+
+</body>
+</html>
