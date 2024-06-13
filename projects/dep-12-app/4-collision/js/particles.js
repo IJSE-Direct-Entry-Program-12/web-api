@@ -37,6 +37,8 @@ for (let i = 0; i < 50; i++) {
             left = particle.offsetLeft + dx;
             top = particle.offsetTop + dy;
 
+            if (cursorElm.classList.contains('hide')) break;
+
             const x1 = cursorElm.offsetLeft + cursorElm.offsetWidth / 2;
             const y1 = cursorElm.offsetTop + cursorElm.offsetHeight / 2;
 
