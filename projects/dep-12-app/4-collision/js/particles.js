@@ -51,16 +51,19 @@ for (let i = 0; i < 50; i++) {
             r2 = particle.offsetWidth / 2;
 
             if (!flag && d <= (r1 + r2)) {
-                if (cursorElm.dx / dx < 0) dx = -dx;
-                if (cursorElm.dy / dy < 0) dy = -dy;
+                if (cursorElm.dx / dx < 0)
+                    dx = -dx;
+                if (cursorElm.dy / dy < 0)
+                    dy = -dy;
                 flag = true;
+                continue;
             }
 
             if (flag) {
                 particle.style.left = `${left}px`;
                 particle.style.top = `${top}px`;
             }
-        }while (d <= (r1 + r2));
+        } while (d <= (r1 + r2));
 
         if (top + particle.offsetHeight >= innerHeight || top <= 0) {
             if (top <= 0) {
