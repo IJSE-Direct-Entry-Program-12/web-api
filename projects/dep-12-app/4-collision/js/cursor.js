@@ -5,8 +5,17 @@ document.body.append(cursorElm);
 
 let tmrId;
 
+let previousX, previousY;
+
 addEventListener('mousemove',
     (e)=> {
+
+    if (previousX) cursorElm.dx = e.clientX - previousX;
+    if (previousY) cursorElm.dy = e.clientY - previousY;
+
+    previousX = e.clientX;
+    previousY = e.clientY;
+
     cursorElm.style.left = `${e.clientX - cursorElm.offsetWidth / 2}px`;
     cursorElm.style.top = `${e.clientY - cursorElm.offsetHeight / 2}px`;
     if (tmrId) clearTimeout(tmrId);
