@@ -1,9 +1,7 @@
 import './style.css'
-
 const characterElm = document
     .querySelector('#character');
 
-let dy = 10;                    // Initial Fall
 let dx = 0;                     // Run
 let i = 0;                      // Rendering
 let t = 0;
@@ -33,15 +31,17 @@ setInterval(() => {
 // Initially Fall Down
 const tmr4InitialFall = setInterval(() => {
     const top = characterElm.offsetTop + (t++ * 10);
-    characterElm.style.top = `${top}px`
     if (characterElm.offsetTop >= (innerHeight - 150 - characterElm.offsetHeight)) {
         clearInterval(tmr4InitialFall);
+        return;
     }
-}, 35);
+    characterElm.style.top = `${top}px`
+}, 30);
 
 // Jump
 function doJump() {
     if (tmr4Jump) return;
+    i = 0;
     jump = true;
     const initialTop = characterElm.offsetTop;
     tmr4Jump = setInterval(() => {
@@ -52,8 +52,15 @@ function doJump() {
             tmr4Jump = undefined;
             jump = false;
             angle = 0;
+            i = 0;
         }
     }, 1);
+}
+
+
+// Utility Fn (Degrees to Radians)
+function toRadians(angle) {
+    return angle * Math.PI / 180;
 }
 
 // Run
@@ -73,15 +80,11 @@ function doRun(left) {
             clearInterval(tmr4Run);
             tmr4Run = undefined;
             run = false;
+            i = 0;
             return;
         }
         characterElm.style.left = `${characterElm.offsetLeft + dx}px`;
     }, 20);
-}
-
-// Utility Fn (Degrees to Radians)
-function toRadians(angle) {
-    return angle * Math.PI / 180;
 }
 
 // Event Listeners
