@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#character {
+    /*border: 1px solid black;*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 20px;
+    top: -20px;
+}
+
+.rotate {
+    transform: rotateY(-180deg);
+}
