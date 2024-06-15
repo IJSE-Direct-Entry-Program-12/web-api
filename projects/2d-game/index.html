@@ -5,14 +5,26 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2D Game</title>
+    <link rel="stylesheet" href="./style.css">
     <script type="module" src="./main.js"></script>
   </head>
   <body>
+    <div id="overlay">
+      <h1>Loading Game Assets</h1>
+      <div id="progress-bar">
+        <div id="bar"></div>
+      </div>
+    </div>
     <div id="character"></div>
     <div id="platform">
       <div id="tile1"></div>
       <div id="tile2"></div>
       <div id="tile3"></div>
+    </div>
+    <div id="start-screen">
+      <h2>Welcome to DEP-12 <br><span>2D</span> Game</h2>
+      <button type="button">PLAY</button>
+      <div id="footer">Copyright &copy; 2024 DEP-12. All Rights Reserved.</div>
     </div>
   </body>
 </html>

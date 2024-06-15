@@ -1,6 +1,50 @@
-import './style.css'
 const characterElm = document
     .querySelector('#character');
+
+await new Promise((resolve)=>{
+    document.querySelector("#start-screen > button")
+        .addEventListener('click', async ()=>{
+            await document.querySelector("html").requestFullscreen({
+                navigationUI: 'hide'
+            });
+            document.querySelector("#start-screen").remove();
+            resolve();
+        });
+});
+
+await new Promise(function (resolve) {
+
+    const images = ['/image/BG.jpg',
+        '/image/tile/Tile (1).png',
+        '/image/tile/Tile (2).png',
+        '/image/tile/Tile (3).png',
+        ...Array(10).fill('/image/character')
+            .flatMap((v, i) => [
+                `${v}/Jump__00${i}.png`,
+                `${v}/Idle__00${i}.png`,
+                `${v}/Run__00${i}.png`
+            ])
+    ];
+    for (const image of images) {
+        const img = new Image();
+        img.src = image;
+        img.addEventListener('load', progress);
+    }
+
+    const barElm = document.getElementById('bar');
+    const totalImages = images.length;
+
+    function progress(){
+        images.pop();
+        barElm.style.width = `${100 / totalImages * (totalImages - images.length)}%`
+        if (!images.length){
+            setTimeout(()=>{
+                document.getElementById('overlay').classList.add('hide');
+                resolve();
+            }, 1000);
+        }
+    }
+});
 
 let dx = 0;                     // Run
 let i = 0;                      // Rendering
@@ -10,6 +54,7 @@ let jump = false;
 let angle = 0;
 let tmr4Jump;
 let tmr4Run;
+let previousTouch;
 
 /* Rendering Function */
 setInterval(() => {
@@ -30,13 +75,13 @@ setInterval(() => {
 
 // Initially Fall Down
 const tmr4InitialFall = setInterval(() => {
-    const top = characterElm.offsetTop + (t++ * 10);
-    if (characterElm.offsetTop >= (innerHeight - 150 - characterElm.offsetHeight)) {
+    const top = characterElm.offsetTop + (t++ * 0.2);
+    if (characterElm.offsetTop >= (innerHeight - 128 - characterElm.offsetHeight)) {
         clearInterval(tmr4InitialFall);
         return;
     }
     characterElm.style.top = `${top}px`
-}, 30);
+}, 20);
 
 // Jump
 function doJump() {
@@ -56,7 +101,6 @@ function doJump() {
         }
     }, 1);
 }
-
 
 // Utility Fn (Degrees to Radians)
 function toRadians(angle) {
@@ -83,14 +127,26 @@ function doRun(left) {
             i = 0;
             return;
         }
-        characterElm.style.left = `${characterElm.offsetLeft + dx}px`;
+        const left = characterElm.offsetLeft + dx;
+        if (left + characterElm.offsetWidth >= innerWidth ||
+            left <= 0) {
+            if (left < 0){
+                characterElm.style.left = '0';
+            }else{
+                characterElm.style.left = `${innerWidth - characterElm.offsetWidth - 1}px`
+            }
+            dx = 0;
+            return;
+        }
+        characterElm.style.left = `${left}px`;
     }, 20);
 }
 
 // Event Listeners
 addEventListener('keydown', (e) => {
     switch (e.code) {
-        case "ArrowLeft": case "ArrowRight":
+        case "ArrowLeft":
+        case "ArrowRight":
             doRun(e.code === "ArrowLeft");
             break;
         case "Space":
@@ -104,4 +160,29 @@ addEventListener('keyup', (e) => {
         case "ArrowRight":
             dx = 0;
     }
+});
+
+addEventListener('resize', ()=>{
+    characterElm.style.top = `${innerHeight - 128 - characterElm.offsetHeight}px`;
+    if (characterElm.offsetLeft < 0){
+        characterElm.style.left = '0';
+    }else if (characterElm.offsetLeft >= innerWidth ){
+        characterElm.style.left = `${innerWidth - characterElm.offsetWidth - 1}px`
+    }
+});
+
+characterElm.addEventListener('touchmove', (e)=>{
+    if (!previousTouch){
+        previousTouch = e.touches.item(0);
+        return;
+    }
+    const currentTouch = e.touches.item(0);
+    doRun((currentTouch.clientX - previousTouch.clientX) < 0);
+    if (currentTouch.clientY < previousTouch.clientY) doJump();
+    previousTouch = currentTouch;
+});
+
+characterElm.addEventListener('touchend', (e)=>{
+    previousTouch = null;
+    dx = 0;
 });
