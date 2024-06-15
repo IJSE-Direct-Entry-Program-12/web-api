@@ -130,7 +130,7 @@ function doRun(left) {
         const left = characterElm.offsetLeft + dx;
         if (left + characterElm.offsetWidth >= innerWidth ||
             left <= 0) {
-            if (left < 0){
+            if (left <= 0){
                 characterElm.style.left = '0';
             }else{
                 characterElm.style.left = `${innerWidth - characterElm.offsetWidth - 1}px`
@@ -162,14 +162,18 @@ addEventListener('keyup', (e) => {
     }
 });
 
-addEventListener('resize', ()=>{
+const resizeFn = ()=>{
     characterElm.style.top = `${innerHeight - 128 - characterElm.offsetHeight}px`;
     if (characterElm.offsetLeft < 0){
         characterElm.style.left = '0';
     }else if (characterElm.offsetLeft >= innerWidth ){
         characterElm.style.left = `${innerWidth - characterElm.offsetWidth - 1}px`
     }
-});
+}
+
+addEventListener('resize', resizeFn);
+/* Fix screen orientation issue in mobile devices */
+screen.orientation.addEventListener('change', resizeFn);
 
 characterElm.addEventListener('touchmove', (e)=>{
     if (!previousTouch){
