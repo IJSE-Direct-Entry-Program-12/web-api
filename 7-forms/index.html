@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Forms</title>
+    <script defer src="./js/index.js"></script>
+</head>
+<body>
+<h1>Forms</h1>
+<form action="kalearanyanna" method="POST" enctype="application/x-www-form-urlencoded">
+    <p>
+        Customer ID: <input name="id">
+    </p>
+    <p>
+        Customer Name: <input name="name">
+    </p>
+    <p>
+        Gender:
+        <label>
+            <input type="radio" name="gender" value="male"> Male
+        </label>
+        <input id="rd-female" type="radio" name="gender" value="female">
+        <label for="rd-female">Female</label>
+    </p>
+    <p>
+        <label>
+            <input id="chk-profile" type="checkbox">
+            Include Profile Picture
+        </label>
+    </p>
+    <p>
+        Profile Picture: <input accept="image/*"
+                                multiple
+                                disabled
+                                id="fl-profile-picture"
+                                type="file"
+                                name="picture">
+    </p>
+    <button id="btn-save">Save</button>
+    <button id="btn-clear" type="button">Clear</button>
+</form>
+<br>
+</body>
+</html>
