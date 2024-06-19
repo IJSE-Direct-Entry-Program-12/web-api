@@ -108,7 +108,7 @@ btnGetAllEmployees2Elm.addEventListener('click', () => {
        console.log("readystate", xhr.readyState);
     });
 
-    xhr.open('GET', `http://localhost:8080/hello-servlet`, true);  // Synchronously
+    xhr.open('GET', `${API_URL}/employees`, true);  // Synchronously
     console.log("Open");
 
     xhr.send();             // Synchronously
