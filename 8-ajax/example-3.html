@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XHR: Uploading</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script defer src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        form {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            justify-items: center;
+            align-items: center;
+            row-gap: 10px;
+
+            #picture {
+                border: 1px solid lightgray;
+                width: 150px;
+                height: 150px;
+                border-radius: 5px;
+            }
+
+            #wrapper {
+                justify-self: start;
+                display: flex;
+                gap: 10px;
+                align-items: start
+            }
+
+            #button-wrapper {
+                grid-column: 2 / 3;
+                justify-self: start;
+            }
+        }
+    </style>
+</head>
+<body class="container">
+<h1 class="text-center mt-2">Uploading</h1>
+<form class="pt-2">
+    <label for="txt-id">ID</label>
+    <input id="txt-id" type="text"
+           class="form-control"
+           placeholder="Eg. S-0001">
+
+    <label for="txt-name">NAME</label>
+    <input id="txt-name" type="text"
+           class="form-control"
+           placeholder="Eg. Kasun Sampath">
+
+    <label for="fl-picture">PICTURE</label>
+    <div id="wrapper">
+        <div id="picture"></div>
+        <button class="btn btn-primary">BROWSE</button>
+        <input id="fl-picture" type="file" class="d-none">
+    </div>
+
+    <div id="button-wrapper" class="d-flex gap-2">
+        <button class="btn btn-success">SAVE</button>
+        <button class="btn btn-warning">CLEAR</button>
+    </div>
+</form>
+<style>
+    #progress-bar {
+        background-color: #00b0ff;
+        height: 10px;
+        width: 50%;
+        border-radius: 5px;
+    }
+
+    #progress {
+        background-color: lightgray;
+        border-radius: 5px;
+    }
+</style>
+<div id="progress-wrapper"
+     class="mt-5 d-grid w-100 text-center">
+    <div id="progress">
+        <div id="progress-bar"></div>
+    </div>
+    <span class="fs-4 mt-2">Uploading 0%</span>
+</div>
+</body>
+</html>
