@@ -34,32 +34,43 @@
                 grid-column: 2 / 3;
                 justify-self: start;
             }
+
+            label::after {
+                content: "*";
+                color: red;
+                padding-left: 2px;
+            }
         }
     </style>
+    <script defer src="./js/example-3.js"></script>
 </head>
 <body class="container">
 <h1 class="text-center mt-2">Uploading</h1>
 <form class="pt-2">
     <label for="txt-id">ID</label>
     <input id="txt-id" type="text"
-           class="form-control"
+           class="form-control" required
+           pattern="^S-\d{4}$"
            placeholder="Eg. S-0001">
 
     <label for="txt-name">NAME</label>
-    <input id="txt-name" type="text"
+    <input id="txt-name" type="text" required
+           pattern="^[A-Za-z][A-Za-z ]+$"
            class="form-control"
            placeholder="Eg. Kasun Sampath">
 
     <label for="fl-picture">PICTURE</label>
     <div id="wrapper">
         <div id="picture"></div>
-        <button class="btn btn-primary">BROWSE</button>
+        <button class="btn btn-primary" type="button">
+            BROWSE
+        </button>
         <input id="fl-picture" type="file" class="d-none">
     </div>
 
     <div id="button-wrapper" class="d-flex gap-2">
         <button class="btn btn-success">SAVE</button>
-        <button class="btn btn-warning">CLEAR</button>
+        <button class="btn btn-warning" type="reset">CLEAR</button>
     </div>
 </form>
 <style>
@@ -76,7 +87,7 @@
     }
 </style>
 <div id="progress-wrapper"
-     class="mt-5 d-grid w-100 text-center">
+     class="mt-5 d-grid w-100 text-center d-none">
     <div id="progress">
         <div id="progress-bar"></div>
     </div>
