@@ -88,24 +88,24 @@ const btnGetAllEmployees2Elm = document
 btnGetAllEmployees2Elm.addEventListener('click', () => {
     const xhr = new XMLHttpRequest();
 
-    xhr.addEventListener('loadstart', ()=>{
-       console.log("Load Start");
+    xhr.addEventListener('loadstart', () => {
+        console.log("Load Start");
     });
 
-    xhr.addEventListener('loadend', ()=>{
-       console.log("Load End");
+    xhr.addEventListener('loadend', () => {
+        console.log("Load End");
     });
 
-    xhr.addEventListener('load', ()=>{
-       console.log("Load");
+    xhr.addEventListener('load', () => {
+        console.log("Load");
     });
 
-    xhr.addEventListener('error', ()=>{
-       console.log("Error");
+    xhr.addEventListener('error', () => {
+        console.log("Error");
     });
 
-    xhr.addEventListener('readystatechange', ()=>{
-       console.log("readystate", xhr.readyState);
+    xhr.addEventListener('readystatechange', () => {
+        console.log("readystate", xhr.readyState);
     });
 
     xhr.open('GET', `${API_URL}/employees`, true);  // Synchronously
@@ -114,6 +114,67 @@ btnGetAllEmployees2Elm.addEventListener('click', () => {
     xhr.send();             // Synchronously
     console.log("Send");
 });
+
+//=================== FETCH API ==============================
+
+const btnFetchReadElm = document
+    .getElementById('btn-fetch-read');
+
+const btnFetchWriteElm = document
+    .getElementById('btn-fetch-write');
+
+btnFetchReadElm.addEventListener('click', async () => {
+    // fetch(`${API_URL}/employees`)
+    //     .then(value => console.log("Then", value))
+    //     .catch(err => console.log("Catch", err))
+    //     .finally(()=>
+    //         console.log("Nawa gilunath ban choon"));
+
+    try {
+        const response = await fetch(`${API_URL}/employees`);
+        console.log(response.status);
+        // console.log(await response.json());
+        console.log(await response.text());
+    } catch (e) {
+        console.log(e);
+    } finally {
+        console.log("Nawa gilunath ban choon");
+    }
+});
+
+btnFetchWriteElm.addEventListener('click',
+    async () => {
+        const headers = new Headers();
+        headers.append("Content-Type",
+            'application/json');
+
+        const request = new Request('https://jsonplaceholder.typicode.com/todos',
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    userId: 1,
+                    title: "New To-do item",
+                    completed: false
+                }),
+                headers: headers,
+            });
+
+        const response = await fetch(request);
+        console.log(await response.json());
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

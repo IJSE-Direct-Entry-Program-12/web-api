@@ -21,6 +21,9 @@
                 width: 150px;
                 height: 150px;
                 border-radius: 5px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
             }
 
             #wrapper {
@@ -46,15 +49,18 @@
 </head>
 <body class="container">
 <h1 class="text-center mt-2">Uploading</h1>
-<form class="pt-2">
+<form action="javascript:void(0)" class="pt-2"
+      enctype="multipart/form-data">
     <label for="txt-id">ID</label>
     <input id="txt-id" type="text"
+           name="id"
            class="form-control" required
            pattern="^S-\d{4}$"
            placeholder="Eg. S-0001">
 
     <label for="txt-name">NAME</label>
     <input id="txt-name" type="text" required
+           name="name"
            pattern="^[A-Za-z][A-Za-z ]+$"
            class="form-control"
            placeholder="Eg. Kasun Sampath">
@@ -62,22 +68,22 @@
     <label for="fl-picture">PICTURE</label>
     <div id="wrapper">
         <div id="picture"></div>
-        <button class="btn btn-primary" type="button">
+        <button id="btn-browse" class="btn btn-primary" type="button">
             BROWSE
         </button>
-        <input id="fl-picture" type="file" class="d-none">
+        <input name="picture" id="fl-picture" type="file" class="d-none">
     </div>
 
     <div id="button-wrapper" class="d-flex gap-2">
-        <button class="btn btn-success">SAVE</button>
-        <button class="btn btn-warning" type="reset">CLEAR</button>
+        <button id="btn-save" class="btn btn-success">SAVE</button>
+        <button id="btn-clear" class="btn btn-warning" type="reset">CLEAR</button>
     </div>
 </form>
 <style>
     #progress-bar {
         background-color: #00b0ff;
         height: 10px;
-        width: 50%;
+        width: 0;
         border-radius: 5px;
     }
 
@@ -91,7 +97,7 @@
     <div id="progress">
         <div id="progress-bar"></div>
     </div>
-    <span class="fs-4 mt-2">Uploading 0%</span>
+    <span id="status" class="fs-4 mt-2">Uploading 0%</span>
 </div>
 </body>
 </html>
