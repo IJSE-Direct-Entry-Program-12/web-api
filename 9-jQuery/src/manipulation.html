@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery - Manipulation</title>
+    <script type="module" src="./js/manipulation.js"></script>
+</head>
+<body>
+    <h1>Manipulation</h1>
+    Go <a href="./index.html">back</a>
+    <hr>
+    <h2>Creating and Inserting</h2>
+    <button id="btn-insert-before" type="button">Insert Before</button>
+    <button id="btn-insert-after" type="button">Insert After</button>
+    <button id="btn-append" type="button">Append</button>
+    <button id="btn-prepend" type="button">Prepend</button>
+    <ul id="list-1">
+        <li>First</li>
+        <li class="second">Second</li>
+        <li>Third</li>
+    </ul>
+    <h2>Cloning and Removing</h2>
+    <button id="btn-clone" type="button">Clone</button>
+    <button id="btn-remove" type="button">Remove</button>
+    <ul id="list-2">
+        <li>Hello <a href="javascript:void(0)">Alert</a></li>
+    </ul>
+    <h2>Replacing</h2>
+    <button id="btn-replace">Replace</button>
+    <button id="btn-replace-with">Replace with</button>
+    <div class="target-1"
+         style="border: 1px solid black; margin-top: 10px">
+        Replace My Content
+    </div>
+    <div class="target-2"
+         style="border: 1px solid black; margin-top: 10px">
+        Replace Me
+    </div>
+    <div class="target-1"
+         style="border: 1px solid black; margin-top: 10px">
+        Replace My Content
+    </div>
+    <div class="target-2"
+         style="border: 1px solid black; margin-top: 10px">
+        Replace Me
+    </div>
+    <h2>Attributes and Properties</h2>
+    <button id="btn-set-tooltip-text" type="button">
+        Set Tooltip Text
+    </button>
+    <button id="btn-get-tooltip-text" type="button">
+        Get Tooltip Text
+    </button>
+    <br>
+    <button id="btn-set-image-src" type="button">
+        Set Image Source
+    </button>
+    <button id="btn-clear-image-src" type="button">
+        Clear Image Source
+    </button>
+    <br><br>
+    <img id="picture" alt="No picture yet">
+    <h2>Example</h2>
+    <style>
+        img#picture-2 {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            border: 1px solid lightgray;
+        }
+
+        input[type="file"]{
+            display: none;
+        }
+    </style>
+    <img id="picture-2" src="#" alt="No Image Yet">
+    <button id="btn-browse" type="button">Browse</button>
+    <input type="file" id="fl-picture" accept="image/*">
+</body>
+</html>

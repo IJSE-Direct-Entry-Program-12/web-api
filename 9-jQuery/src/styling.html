@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery - Styling</title>
+    <style>
+        #box {
+            border: 2px solid red;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script type="module" src="./js/styling.js"></script>
+</head>
+<body>
+    <h1>Styling</h1>
+    Go <a href="./index.html">back</a>
+    <hr>
+    <div id="box" style="background-color: yellow;"></div>
+    <button id="btn-change-color">Change Color</button>
+    <button id="btn-get-color">Get Color</button>
+    <button id="btn-get-dimensions">Get Dimensions</button>
+    <hr>
+    <style>
+        #parent {
+            border: 1px solid black;
+            background-color: yellow;
+            width: 400px;
+            height: 400px;
+            position: relative;
+
+            #elm {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                padding: 20px;
+                border: 15px solid blue;
+                margin: 20px;
+                background-color: red;
+                left: 50px;
+                top: 100px;
+                background-clip: content-box;
+            }
+        }
+    </style>
+    <div id="parent">
+        <div id="elm"></div>
+    </div>
+</body>
+</html>
