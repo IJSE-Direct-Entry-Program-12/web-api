@@ -76,6 +76,7 @@ async function saveStudent(){
                 </tr>
            `;
         $("#tbl-student > tbody").append(rowHtml);
+        $("#tbl-student > tfoot").hide();
         $("form").trigger('reset');
     }catch (e){
         alert("Failed to save the student, try again");
