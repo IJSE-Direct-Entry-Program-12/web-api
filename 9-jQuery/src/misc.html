@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery - Miscellaneous</title>
+    <script type="module" src="./js/misc.js"></script>
+    <style>
+        #overlay {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        /* HTML: <div class="loader"></div> */
+        .loader {
+            transform: scale(2);
+            width: 50px;
+            aspect-ratio: 1;
+            color: #f03355;
+            --_c:no-repeat radial-gradient(farthest-side,currentColor 92%,#0000);
+            background:
+                    var(--_c) 50% 0   /12px 12px,
+                    var(--_c) 50% 100%/12px 12px,
+                    var(--_c) 100% 50%/12px 12px,
+                    var(--_c) 0    50%/12px 12px,
+                    var(--_c) 50%  50%/12px 12px,
+                    conic-gradient(from 90deg at 4px 4px,#0000 90deg,currentColor 0)
+                    -4px -4px/calc(50% + 2px) calc(50% + 2px);
+            animation: l8 1s infinite linear;
+        }
+        @keyframes l8 {to{transform: rotate(.5turn) scale(2)}}
+    </style>
+</head>
+<body>
+    <div id="overlay">
+        <h1>Loading</h1>
+        <div class="loader"></div>
+    </div>
+    <h1>Miscellaneous</h1>
+    Go <a href="./index.html">back</a>
+    <hr>
+    <div style="text-align: center;">
+        <button id="btn-show" type="button">Show</button>
+        <button id="btn-hide" type="button">Hide</button>
+        <button id="btn-fade-in" type="button">Fade In</button>
+        <button id="btn-fade-out" type="button">Fade Out</button>
+        <button id="btn-slide-up" type="button">Slide Up</button>
+        <button id="btn-slide-down" type="button">Slide Down</button>
+        <h1 id="target">Change Me</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam consequatur distinctio in ipsum labore nemo odit quae voluptas voluptate. Architecto asperiores beatae commodi, dicta error ipsum officiis temporibus voluptas!
+        </p>
+        <img src="https://images.unsplash.com/photo-1718627829230-a3f11114adb5?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1">
+        <img src="https://plus.unsplash.com/premium_photo-1681429766540-f05bd18b4002?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 2">
+        <img src="https://images.unsplash.com/photo-1479186479563-2af7090284c6?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 3">
+        <img src="https://images.unsplash.com/photo-1717511140281-52586e5e307d?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 4">
+    </div>
+</body>
+</html>

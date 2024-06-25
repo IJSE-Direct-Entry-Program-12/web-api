@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery - Forms</title>
+    <script type="module" src="./js/forms.js"></script>
+</head>
+<body>
+    <h1>Forms</h1>
+    Go <a href="./index.html">back</a>
+    <hr>
+    <form action="">
+        <p>
+            Customer ID:
+            <input id="txt-id" type="text" name="id">
+        </p>
+        <p>
+            Customer Name:
+            <input id="txt-name" type="text" name="name">
+        </p>
+        <p>
+            Customer Address:
+            <textarea id="txt-address" name="address"></textarea>
+        </p>
+        <p>
+            Membership Type:
+            <select id="cb-membership-type" name="type">
+                <option value="premium">Premium</option>
+                <option value="gold">Gold</option>
+                <option selected value="silver">Silver</option>
+            </select>
+        </p>
+        <button>Save</button>
+        <button type="reset">Clear</button>
+    </form>
+</body>
+</html>
