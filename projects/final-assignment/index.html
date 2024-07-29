@@ -31,12 +31,13 @@
     <script defer src="./js/index.js"></script>
 </head>
 <body>
+<div id="progress-bar"></div>
 <header class="container d-flex justify-content-between align-items-center border p-2">
     <h3 class="m-0">
         <i class="bi bi-person-bounding-box"></i>
         <span class="text-primary">E</span>MS
     </h3>
-    <button class="btn btn-sm btn-outline-success">+ NEW EMPLOYEE</button>
+    <button id="btn-new-employee" class="btn btn-sm btn-outline-success">+ NEW EMPLOYEE</button>
 </header>
 <main class="container">
     <div class="row">
@@ -54,35 +55,38 @@
                 <label class="form-label" for="txt-address">Employee Address</label>
                 <textarea id="txt-address" class="form-control"
                           placeholder="Eg. 10B, Grace Peries Road, Panadura"></textarea>
-                <div class="invalid-feedback"></div>
+                <div class="invalid-feedback">
+                    Address should have at least 3 characters
+                </div>
             </div>
             <div class="mt-2 border p-2">
                 <label class="form-label" for="rd-male">Employee Gender</label>
                 <div class="d-flex gap-4 border-top pt-2 justify-content-center">
-                    <label><input id="rd-male" class="form-check-input" type="radio" name="gender" value="male">
+                    <label><input id="rd-male" class="form-check-input me-1" type="radio" name="gender" value="male">
                         Male</label>
-                    <label><input id="rd-female" class="form-check-input" type="radio" name="gender" value="female">
+                    <label><input id="rd-female" class="form-check-input me-1" type="radio" name="gender" value="female">
                         Female</label>
                 </div>
             </div>
             <div class="mt-2">
                 <label class="form-label" for="txt-name">Employee Department</label>
                 <select id="cb-department" class="form-select">
-                    <option value="academic">Academic</option>
-                    <option value="hr">Human Resource</option>
-                    <option value="it/se">IT/SE</option>
-                    <option value="marketing">Marketing</option>
-                    <option value="finance">Finance</option>
+                    <option value="no-department"></option>
+                    <option value="Academic">Academic</option>
+                    <option value="Human Resource">Human Resource</option>
+                    <option value="IT/SE">IT/SE</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Finance">Finance</option>
                 </select>
-                <div class="invalid-feedback"></div>
+                <div class="invalid-feedback">Employee department can't be empty</div>
             </div>
             <div class="mt-3">
-                <button class="btn btn-primary btn-sm">SAVE</button>
-                <button class="btn btn-outline-danger btn-sm">CLEAR</button>
+                <button id="btn-save" disabled class="btn btn-primary btn-sm">SAVE</button>
+                <button type="reset" class="btn btn-outline-danger btn-sm">CLEAR</button>
             </div>
         </form>
         <section class="col-12 col-lg-8 p-0">
-            <table class="table table-bordered table-hover">
+            <table id="tbl-employee" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>ID</th>

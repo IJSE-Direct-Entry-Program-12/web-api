@@ -64,4 +64,17 @@ form {
             padding-left: 5px;
         }
     }
+
+    label:has(input[type="radio"][name="gender"].is-invalid){
+        color: rgb(220, 55, 70);
+    }
 }
+
+#progress-bar {
+    background-color: dodgerblue;
+    height: 3px;
+    position: fixed;
+    z-index: 1;
+    transition: width 10ms;
+}
+
